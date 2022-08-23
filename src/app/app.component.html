@@ -1,0 +1,10 @@
+<h1>Material Autocomplete</h1>
+<!-- <p>Start editing to see some magic happen :)</p> -->
+<app-autocomplete-dropdown
+  label="User"
+  [items]="users"
+  target="name"
+  [selectedItem]="selectedUser['name']"
+  (selection)="setUser($event)"
+  (clear)="clearInput('selectedCustomer')"
+></app-autocomplete-dropdown>

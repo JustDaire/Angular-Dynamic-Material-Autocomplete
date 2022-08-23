@@ -1,0 +1,21 @@
+.select-placeholder-container {
+  display: flex;
+  align-items: center;
+}
+
+.select-placeholder-container > span {
+  flex: 1;
+}
+
+.spinner {
+  float: right;
+}
+
+.mat-error {
+  display: block;
+  margin-top: 0.8rem;
+}
+
+.mat-progress-spinner {
+  margin: 0 !important;
+}

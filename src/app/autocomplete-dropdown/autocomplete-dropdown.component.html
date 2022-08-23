@@ -1,0 +1,42 @@
+<mat-form-field appearance="outline">
+  <mat-label *ngIf="items.length != 0">{{ label }}</mat-label>
+  <mat-label *ngIf="items.length == 0">
+    <div class="select-placeholder-container">
+      <span
+        >Loading {{ label }}s...
+        <mat-spinner class="spinner" diameter="20"></mat-spinner
+      ></span>
+    </div>
+  </mat-label>
+  <input
+    type="text"
+    matInput
+    [(ngModel)]="selectedItem"
+    [formControl]="myControl"
+    [matAutocomplete]="auto"
+    [disabled]="disabled || items.length == 0"
+    [readonly]="items.length == 0"
+    [required]="required"
+  />
+  <mat-error *ngIf="myControl.invalid">{{ label }} is required</mat-error>
+  <button
+    *ngIf="selectedItem"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="clearInput()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let option of filteredOptions | async"
+      [value]="option[target]"
+      (onSelectionChange)="itemSelected(option)"
+      [disabled]="disabled || items.length == 0"
+    >
+      <span *ngIf="target == ''">{{ option }}</span>
+      <span *ngIf="target != ''">{{ option[target] }}</span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
